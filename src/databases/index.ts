@@ -1,5 +1,9 @@
 import { DataSource } from 'typeorm';
 import envConfig from '../common/config/config';
+import { KhachHang } from './entities/User';
+import { DonHang } from './entities/Order';
+import { ChiTietDonHang } from './entities/OrderDetails';
+import { SanPham } from './entities/Product';
 class MysqlDatabase {
   uiShopConnection = {
     nameSchema: envConfig.getDbName,
@@ -10,7 +14,7 @@ class MysqlDatabase {
       password: envConfig.getDbPassword,
       database: envConfig.getDbName,
       type: 'mysql',
-      entities: [],
+      entities: [KhachHang, DonHang, ChiTietDonHang, SanPham],
     }),
   };
 

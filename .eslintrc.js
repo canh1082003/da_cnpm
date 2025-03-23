@@ -25,6 +25,7 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'import', 'unicorn', 'sonarjs'],
   rules: {
+    'no-await-in-loop': 'off',
     'unicorn/filename-case': 'off',
     '@typescript-eslint/unbound-method': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
@@ -58,7 +59,8 @@ module.exports = {
       {
         types: {
           Function: {
-            message: 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
+            message:
+              'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
           },
           Boolean: {
             message: 'Avoid using the `Boolean` type. Did you mean `boolean`?',
