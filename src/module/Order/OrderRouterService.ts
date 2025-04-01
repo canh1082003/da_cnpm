@@ -12,6 +12,27 @@ class OrderRouterService {
     Object.assign(order, updata);
     return await order?.save();
   }
+  async getAllOrder() {
+    return await DonHang.find();
+  }
+  async addOrderByStaff(shipperId: number, id: number) {
+    const order = await DonHang.findOne({
+      where: {
+        id,
+        status: 'pending',
+      },
+    });
+
+    if (!order) {
+      throw new Error('Đơn hàng không tồn tại hoặc đã được nhận');
+    }
+    order.shipperId = shipperId;
+    order.status = 'processing';
+    await order.save();
+  }
+  async getOrderByStatus() {
+    return await DonHang.find({ where: { status: 'pending' } });
+  }
 }
 
 export default new OrderRouterService();

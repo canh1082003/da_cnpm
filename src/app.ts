@@ -38,7 +38,7 @@ export class App {
     try {
       const HOST = config.hostServer;
       const PORT = config.portServer;
-      mysqlDatabase.connect();
+      void mysqlDatabase.connect();
       this.app.listen(PORT, () => {
         logger.info(
           `Server running at http://${HOST}:${PORT}${config.contextPath}`

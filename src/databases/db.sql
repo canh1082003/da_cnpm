@@ -15,6 +15,8 @@ CREATE TABLE `DonHang`(
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     `total_amount` DECIMAL(8, 2) NOT NULL,
+    `orderCode` VARCHAR(10) NOT NULL unique,
+    `shipperId` VARCHAR(50) NOT null,
      CONSTRAINT `donhang_customerid_foreign` FOREIGN KEY (`customerId`) REFERENCES `KhachHang`(`id`) ON DELETE CASCADE
 );
 

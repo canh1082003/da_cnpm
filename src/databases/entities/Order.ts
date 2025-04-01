@@ -59,6 +59,9 @@ export class DonHang extends BaseEntity {
   @Column({ type: 'varchar', length: 10, nullable: false, unique: true })
   orderCode: string;
 
+  @Column({ type: 'bigint', unsigned: true, nullable: true })
+  shipperId: number;
+
   @OneToMany(() => ChiTietDonHang, (ctdh) => ctdh.donHang)
   chiTietDonHangs: ChiTietDonHang[];
 
