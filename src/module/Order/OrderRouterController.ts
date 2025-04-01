@@ -55,5 +55,47 @@ class OrderRouterController {
       next(error);
     }
   }
+  async getAllOrder(req: Request, res: Response, next: NextFunction) {
+    try {
+      const order = await OrderRouterService.getAllOrder();
+      return res.status(200).json({
+        message: 'Lấy tất cả đơn hàng thành công',
+        data: order,
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+  async addOrderByStaff(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.body;
+      const { shipperId } = req.params;
+      const order = await OrderRouterService.addOrderByStaff(
+        Number(shipperId),
+        Number(id)
+      );
+
+      return res.status(200).json({
+        message: 'Nhận Đơn Thành Công',
+        data: order,
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+  async getOrderByStatus(req: Request, res: Response, next: NextFunction) {
+    try {
+      const order = await OrderRouterService.getOrderByStatus();
+      return res.status(200).json({
+        message: 'Lấy Đơn Hàng Đang Pending',
+        data: order,
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 export default new OrderRouterController();

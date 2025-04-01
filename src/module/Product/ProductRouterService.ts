@@ -22,5 +22,13 @@ class ProductRouterService {
     }
     return product;
   }
+  async updateProductById(id: number, updateData: Partial<SanPham>) {
+    const product = await SanPham.findOne({ where: { id } });
+    if (!product) {
+      throw new Error('Không Tìm thấy sản phẩm');
+    }
+    Object.assign(product, updateData);
+    return await product.save();
+  }
 }
 export default new ProductRouterService();

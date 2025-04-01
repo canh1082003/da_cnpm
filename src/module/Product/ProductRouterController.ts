@@ -52,5 +52,22 @@ class ProductRouterController {
       next(error);
     }
   }
+  async updateProductById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      const updateData = req.body;
+      const product = await ProductRouterService.updateProductById(
+        Number(id),
+        updateData
+      );
+      return res.status(200).json({
+        message: 'Cập Nhật Sản Phẩm Thành Công',
+        data: product,
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 export default new ProductRouterController();
