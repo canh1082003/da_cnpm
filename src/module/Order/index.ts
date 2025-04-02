@@ -16,6 +16,8 @@ OrderRouter.put(
   OrderRouterController.addOrderByStaff
 );
 OrderRouter.get('/getOrderByStatus', OrderRouterController.getOrderByStatus);
-// có 1 hàm findAllOrder nhưng mà chưa có id nào của staff nhận
-// tạo 1 hàm addOrderByStaff khi mà nhận thì add id trên param của staff vào order
+OrderRouter.get(
+  '/getOrderAllByAddShipper/:shipperId',
+  OrderRouterController.getOrderAllByAddShipper
+);
 export default OrderRouter;
