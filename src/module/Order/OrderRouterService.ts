@@ -28,10 +28,13 @@ class OrderRouterService {
     }
     order.shipperId = shipperId;
     order.status = 'processing';
-    await order.save();
+    return await order.save();
   }
   async getOrderByStatus() {
     return await DonHang.find({ where: { status: 'pending' } });
+  }
+  async getOrderAllByAddShipper(shipperId: number) {
+    return await DonHang.find({ where: { shipperId } });
   }
 }
 

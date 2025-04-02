@@ -97,5 +97,24 @@ class OrderRouterController {
       next(error);
     }
   }
+  async getOrderAllByAddShipper(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { shipperId } = req.params;
+      const order = await OrderRouterService.getOrderAllByAddShipper(
+        Number(shipperId)
+      );
+      return res.status(200).json({
+        message: 'Lấy thành công',
+        data: order,
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 export default new OrderRouterController();
